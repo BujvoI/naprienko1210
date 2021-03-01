@@ -5,7 +5,7 @@
       <button class="btn btn-outline-primary" (click)="sortByCount(productList)">Сортировать по количеству</button>
     </div>
     <div class="btn-group mt-2 col" role="group" aria-label="Basic example">
-      <button class="w-50 btn btn-outline-info" (change)="filterByCount(productList)">Отфильтровать по наличию</button>
+      <button class="w-50 btn btn-outline-info" (click)="filterByCount(productList)">Отфильтровать по наличию</button>
       <select #category class="w-50 custom-select btn btn-outline-info" (change)="filterByCategory(category.value,productList)" >
         <option value="">Выберите категорию</option>
         <option value="мебель">мебель</option>
