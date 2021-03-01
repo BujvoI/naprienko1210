@@ -1,0 +1,39 @@
+<div class="row mt-5 mb-3">
+  <div class="col text-left flex-column align-items-start justify-content-start mt-5">
+    <div class="btn-group col" role="group" aria-label="Basic example">
+      <button class="btn btn-outline-primary" (click)="sortByPrice(productList)">Сортировать по цене</button>
+      <button class="btn btn-outline-primary" (click)="sortByCount(productList)">Сортировать по количеству</button>
+    </div>
+    <div class="btn-group mt-2 col" role="group" aria-label="Basic example">
+      <button class="w-50 btn btn-outline-info" (change)="filterByCount(productList)">Отфильтровать по наличию</button>
+      <select #category class="w-50 custom-select btn btn-outline-info" (change)="filterByCategory(category.value,productList)" >
+        <option value="">Выберите категорию</option>
+        <option value="мебель">мебель</option>
+        <option value="техника">техника</option>
+        <option value="книги">книги</option>
+        <option value="телефоны">телефоны</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row mt-2" *ngFor="let product of productList">
+  <div class="col-12">
+    <div class="card" [ngClass]="{'border-danger':!product.name, 'border-success':product.name}">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">категория: {{product.category}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">вес: {{product.weight}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Цена: {{product.price}}</h6>
+        <p class="card-text">
+          кол-во: {{product.count}}
+        </p>
+        <div class="btn-group mr-2" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-success" (click)="updateCountOfProduct(product.id,1)">+1</button>
+          <button type="button" class="btn btn-danger" (click)="updateCountOfProduct(product.id,0)">-1</button>
+        </div>
+        <button class="btn btn-primary mr-2" [routerLink]="['/edit', product.id]">Редактировать</button>
+        <button class="btn btn-danger" (click)="deleteProduct(product.id)">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
