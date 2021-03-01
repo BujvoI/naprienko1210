@@ -75,7 +75,7 @@ export class ListComponent implements OnInit {
   filterByCount(productList: Product[]) {
     this.typeFilterCount = !this.typeFilterCount;
     productList = this.productListConst;
-    this.productList = productList.filter((subject) => this.typeFilterCount?(subject.count !== 0):(subject.count === 0));
+    this.productList = productList.filter((subject) => this.typeFilterCount?(subject.count !== 0):(subject.count > -1));
   }
 
   sortByPrice(productList: Product[]){
